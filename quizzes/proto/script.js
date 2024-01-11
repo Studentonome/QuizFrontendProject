@@ -16,13 +16,15 @@ const questions = [
 const endings = [
     {
         text:"",
-        button:"",
         correctAnswersNeed:0,
     },
 ]
+const endButtonTextToBeginQuiz = "";//Текст для кнопки для начала заново квиза
+const endButtonTextToMainPage = "";//Текст для кнопки ссылки на главную страницу
 const beginMainText = "";//Основной текст начала квиза
-const beginText = "";//Текст на кнопке начала квиза
+const beginButtonText = "";//Текст на кнопке начала квиза
 const nextQuestionText = "";//Текст перехода к следующему вопросу
+const endQuizText = ""; //Текст для перехода к концу квиза
 
 let mainText = document.getElementById("mainText");
 let opt1Text = document.getElementById("opt1Text");
@@ -32,19 +34,22 @@ let opt4Text = document.getElementById("opt4Text");
 let opt5Text = document.getElementById("opt5Text");
 let opt6Text = document.getElementById("opt6Text");
 let beginButton = document.getElementById("beginButton");
-let endButton = document.getElementById("endButton");
-let nextQ = document.getElementById("nextQ");
+let endButtonToBegin = document.getElementById("endButtonToBegin");
+let endButtonToMainPage = document.getElementById("endButtonToMainPage");
+let nextQuestion = document.getElementById("nextQ");
+//nextQ
 
 let viewedQuestions = new Set();
+
+let correctAnswers = 0;
+let currentAnswer = 0;//1 - 6
+let currentQuestion = 0;
 
 let isBegin = false;
 let isEnd = false;
 let isQuestion = false;
 let isShowAns = false;
 
-let correctAnswers = 0;
-let currentAnswer = 0;//1 - 6
-let currentQuestion = 0;
 //////////////////////////////////////////////////////////////////functions
 function allZero(){
     isBegin = false;
@@ -53,8 +58,9 @@ function allZero(){
     isShowAns = false;
     mainText.innerHTML = "";
     beginButton.innerHTML = "";
-    endButton.innerHTML = "";
-    nextQ.innerHTML = "";
+    endButtonToBegin.innerHTML = "";
+    endButtonToMainPage.innerHTML = "";
+    nextQuestion.innerHTML = "";
     opt1Text.innerHTML = "";
     opt2Text.innerHTML = "";
     opt3Text.innerHTML = "";
@@ -84,7 +90,10 @@ function deleteOptions(){
 function option(){
     isQuestion = false;
     isShowAns = true;
-    nextQ.innerHTML = nextQuestionText;
+    if(viewedQuestions.size === maxQuestions)
+    {nextQuestion.innerHTML = endQuizText;}
+    else
+    {nextQuestion.innerHTML = nextQuestionText;}
     showRightAns();
     deleteOptions();
 }
@@ -96,6 +105,8 @@ function opt4() {currentAnswer = 4; option();}
 function opt5() {currentAnswer = 5; option();}
 function opt6() {currentAnswer = 6; option();}
 
+
+
 function begin(){
     allZero();
     isBegin = true;
@@ -103,7 +114,7 @@ function begin(){
     viewedQuestions.clear();
     
     mainText.innerHTML = beginMainText;
-    beginButton.innerHTML = beginText;
+    beginButton.innerHTML = beginButtonText;
 };
 
 function showQuestion(){
@@ -170,24 +181,25 @@ function end(){
     for (const ending in endings) {
         if (ending.correctAnswersNeed < correctAnswers) {
             mainText.innerHTML = ending.text;
-            endButton = ending.button;
             break;
         }
     }
+    endButtonToBegin.innerHTML = endButtonTextToBeginQuiz;
+    endButtonToMainPage.innerHTML = endButtonTextToMainPage;
 }
 
-//////////////////////////////////////////////////////////events
+//////////////////////////////////////////////////////////eventsListeners
 
-beginText.addEventListener("click",(e)=>{
+beginButton.addEventListener("click",(e)=>{
     showQuestion();
     e.preventDefault();
 })
-endText.addEventListener("click",(e)=>{
+endButtonToBegin.addEventListener("click",(e)=>{
     begin();
     e.preventDefault();
 })
 
-nextQ.addEventListener("click",(e)=>{
+nextQuestion.addEventListener("click",(e)=>{
     unshowRightAns();
     if(viewedQuestions.size === maxQuestions)
     {end();}
@@ -196,6 +208,6 @@ nextQ.addEventListener("click",(e)=>{
     e.preventDefault();
 })
 
-/////////////////////////////////////////////////////////////start with begin
+////////////start with begin
 begin();
 
