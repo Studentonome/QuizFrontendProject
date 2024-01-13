@@ -20,7 +20,7 @@ header{
     color: aliceblue;
     text-align: center;
     font-size: 3rem;
-    width: 90%;
+    width: 80%;
     padding: 10px;
     border: 9px ridge darkslateblue;
     margin: auto;
@@ -39,7 +39,7 @@ main{
     align-items: stretch;
     margin-top: 20px;
 }
-div{
+main div{
     height: auto;
     width: auto;
     min-width: 550px;
@@ -80,4 +80,25 @@ img:empty{
 }
 .red{
     background-color: firebrick;
+}
+#buttonToMainPage{
+    position: absolute;
+    float: left;
+    background-color: dodgerblue;
+    color: aliceblue;
+    /* text-align: center; */
+    font-size: 2rem;
+    height: auto;
+    width: auto;
+    padding-top: 0px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 9px ridge darkslateblue;
+    /* margin: auto; */
+}
+#buttonToMainPage a{
+    display: inline;
+    color:darkslategray;
+    font-size: 1.5rem;
 }

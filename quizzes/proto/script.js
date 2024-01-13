@@ -4,7 +4,7 @@ const questions = [
     mainText:"",
     option1:{
         text:"",
-        flag:true,
+        correct:true,
     },
     option2:null,
     option3:null,
@@ -19,8 +19,7 @@ const endings = [
         correctAnswersNeed:0,
     },
 ]
-const endButtonTextToBeginQuiz = "";//Текст для кнопки для начала заново квиза
-const endButtonTextToMainPage = "";//Текст для кнопки ссылки на главную страницу
+const endButtonTextToBeginQuiz = "";//Текст для кнопки для начала нового квиза
 const beginMainText = "";//Основной текст начала квиза
 const beginButtonText = "";//Текст на кнопке начала квиза
 const nextQuestionText = "";//Текст перехода к следующему вопросу
@@ -35,7 +34,6 @@ let opt5Text = document.getElementById("opt5Text");
 let opt6Text = document.getElementById("opt6Text");
 let beginButton = document.getElementById("beginButton");
 let endButtonToBegin = document.getElementById("endButtonToBegin");
-let endButtonToMainPage = document.getElementById("endButtonToMainPage");
 let nextQuestion = document.getElementById("nextQ");
 //nextQ
 
@@ -59,7 +57,6 @@ function allZero(){
     mainText.innerHTML = "";
     beginButton.innerHTML = "";
     endButtonToBegin.innerHTML = "";
-    endButtonToMainPage.innerHTML = "";
     nextQuestion.innerHTML = "";
     opt1Text.innerHTML = "";
     opt2Text.innerHTML = "";
@@ -67,6 +64,19 @@ function allZero(){
     opt4Text.innerHTML = "";
     opt5Text.innerHTML = "";
     opt6Text.innerHTML = "";
+}
+
+function rand(){
+
+    let show = (Math.floor(Math.random() * (questions.length)));
+    //находит число от 0 до количества вопросов всего
+    while(/*!*/(viewedQuestions.has(show)))
+    {
+        show = (show+1) % questions.length;
+    }
+    //Проматывает просмотернные вопросы
+    return show;
+    
 }
 
 function addOptions(){
@@ -90,6 +100,8 @@ function deleteOptions(){
 function option(){
     isQuestion = false;
     isShowAns = true;
+    if(questions[currentQuestion]["option"+currentAnswer.toString()].correct)
+    {correctAnswers++;}
     if(viewedQuestions.size === maxQuestions)
     {nextQuestion.innerHTML = endQuizText;}
     else
@@ -121,13 +133,7 @@ function showQuestion(){
     allZero();
     isQuestion = true;
 
-    let show = (Math.floor(Math.random() * (questions.length)));
-    //находит число от 0 до количества вопросов всего
-    while(/*!*/(viewedQuestions.has(show)))
-    {
-        show = (show+1) % questions.length;
-    }
-    num = show;
+    num = rand();
     
     mainText.innerHTML = questions[num].mainText;
 
@@ -148,7 +154,7 @@ function showQuestion(){
     if(question[num].option6)
     {opt6Text.innerHTML = question[num].option6.text}
 };
-////Тут скорее всего будет ошибка при обращении с помощью квадратных скобок
+
 function showRightAns(){
     for(let i=1; i<=6; ++i)
     {
@@ -185,7 +191,6 @@ function end(){
         }
     }
     endButtonToBegin.innerHTML = endButtonTextToBeginQuiz;
-    endButtonToMainPage.innerHTML = endButtonTextToMainPage;
 }
 
 //////////////////////////////////////////////////////////eventsListeners
