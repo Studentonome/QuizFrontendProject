@@ -256,7 +256,11 @@ function changeState(){
         allZero();
         isQuestion = true;
         currentQuestion = rand();
-        mainText.innerHTML = questions[currentQuestion].mainText;
+        if("image" in questions[currentQuestion])
+        {mainText.innerHTML =  `${questions[currentQuestion].mainText}<br/><img src="${questions[currentQuestion].image}">`;}
+        else
+        {mainText.innerHTML = questions[currentQuestion].mainText;}
+        
         
         viewedQuestions.add(currentQuestion);
         

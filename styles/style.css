@@ -72,6 +72,10 @@ a{
 div:empty{
     display: none;
 }
+img{
+    width: auto;
+    height: auto;
+}
 img:empty{
     display: none;
 }
