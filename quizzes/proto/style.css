@@ -29,6 +29,8 @@ main{
     margin-top: 20px;
 }
 div{
+    max-width: 500px;
+    max-height: 500px;
     height: auto;
     width: auto;
 }
