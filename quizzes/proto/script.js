@@ -213,10 +213,11 @@ let correctAnswers = 0;
 let currentAnswer = 0;//1 - 4
 let currentQuestion = 0;
 
+let isNewBegin = true;
 let isBegin = false;
 let isQuestion = false;
 let isShowAns = false;
-let isEnd = true;
+let isEnd = false;
 let isNewQuestion = false
 
 ////////////////////////////////////////////////////////functions
@@ -328,7 +329,7 @@ function changeState(){
             changeState();
         }
     }
-    else if(isEnd)
+    else if(isEnd || isNewBegin)
     {
         allZero();
         isBegin = true;
@@ -340,10 +341,10 @@ function changeState(){
     }
 }
 
-function opt1() {console.log("opt1"); currentAnswer = 1; changeState(); }
-function opt2() {console.log("opt2"); currentAnswer = 2; changeState(); }
-function opt3() {console.log("opt3"); currentAnswer = 3; changeState(); }
-function opt4() {console.log("opt4"); currentAnswer = 4; changeState(); }
+function opt1() {currentAnswer = 1; changeState(); }
+function opt2() {currentAnswer = 2; changeState(); }
+function opt3() {currentAnswer = 3; changeState(); }
+function opt4() {currentAnswer = 4; changeState(); }
 
 ////////////////////////////////eventsListeners
 
