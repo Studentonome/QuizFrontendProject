@@ -44,7 +44,7 @@ div{
 .flexbox{
     display: flex;
     flex-flow: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-content: start;
     justify-items: stretch;
     align-items: stretch;
@@ -53,7 +53,7 @@ div{
     padding: 10px;
     margin: 5px;
     text-align: center;
-    min-width: 550px;
+    width: 40%;
     border-radius: 5px;
     border: 7px outset darkblue;
     transition: 0.2s;
@@ -67,7 +67,7 @@ div{
     padding: 10px;
     margin: 5px;
     text-align: center;
-    width: 700px;
+    width: 80%;
     border-radius: 5px;
     border: 7px outset darkblue;
     transition: 0.2s;
@@ -83,12 +83,6 @@ div:empty{
 img:empty{
     display: none;
 }
-.green{
-    background-color: limegreen !important;
-}
-.red{
-    background-color: firebrick !important;
-}
 #buttonToMainPage{
     position: absolute;
     float: left;
@@ -96,16 +90,12 @@ img:empty{
     color: aliceblue;
     border: 9px ridge darkslateblue;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.2rem;
     height: auto;
     width: auto;
-    padding-top: 0px;
-    padding-bottom: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 #buttonToMainPage a{
-    display: inline;
+    display: inline-block;
     color:darkslategray;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
