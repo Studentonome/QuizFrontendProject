@@ -1,46 +1,217 @@
-const maxQuestions = 0;//количество вопросов которые будут использованы в квизе
+const maxQuestions = 5;//количество вопросов которые будут использованы в квизе
 const questions = [
-{
-    mainText:"",
+{//1
+    mainText:'Which tool is best for digging stone and bricks?',
     option1:{
-        text:"",
+        text:"Shovel",
+        correct:false,
+    },
+    option2:{
+        text:"Pickaxe",
         correct:true,
     },
-    option2:null,
-    option3:null,
-    option4:null,
-    option5:null,
-    option6:null,
+    option3:{
+        text:"Axe",
+        correct:false,
+    },
+    option4:{
+        text:"Sword",
+        correct:false,
+    }
+},
+{//2
+    mainText:'How many cobblestone blocks are needed in total to craft a furnace?',
+    option1:{
+        text:"6",
+        correct:false,
+    },
+    option2:{
+        text:"10",
+        correct:false,
+    },
+    option3:{
+        text:"8",
+        correct:false,
+    },
+    option4:{
+        text:"9",
+        correct:true,
+    }
+},
+{//3
+    mainText:'What is the weakest Minecraft armor made with?',
+    option1:{
+        text:"Iron",
+        correct:false,
+    },
+    option2:{
+        text:"Chainmail",
+        correct:false,
+    },
+    option3:{
+        text:"Leather",
+        correct:true,
+    },
+    option4:{
+        text:"Gold",
+        correct:false,
+    }
+},
+{//4
+    mainText:'What is the nickname of Minecraft creator?',
+    option1:{
+        text:"Zizot",
+        correct:false,
+    },
+    option2:{
+        text:"Apple",
+        correct:false,
+    },
+    option3:{
+        text:"Dinnerbone",
+        correct:false,
+    },
+    option4:{
+        text:"Notch",
+        correct:true,
+    }
+},
+{//5
+    mainText:'What was the original name of Minecraft when it was first published?',
+    option1:{
+        text:"Mine-Crafter",
+        correct:false,
+    },
+    option2:{
+        text:"Cave Game",
+        correct:true,
+    },
+    option3:{
+        text:"Procedural Game",
+        correct:false,
+    },
+    option4:{
+        text:"Minicraft",
+        correct:false,
+    }
+},
+{//6
+    mainText:'Which one of these animals can be ridden with saddle along with horses and mules?',
+    option1:{
+        text:"Pig",
+        correct:true,
+    },
+    option2:{
+        text:"Bee",
+        correct:false,
+    },
+    option3:{
+        text:"Cow",
+        correct:false,
+    },
+    option4:{
+        text:"Goat",
+        correct:false,
+    }
+},
+{//7
+    mainText:'Which material creates the strongest armor or weapons?',
+    option1:{
+        text:"Iron",
+        correct:false,
+    },
+    option2:{
+        text:"Netherite",
+        correct:true,
+    },
+    option3:{
+        text:"Diamonds",
+        correct:false,
+    },
+    option4:{
+        text:"Emeralds",
+        correct:false,
+    }
+},
+{//8
+    mainText:'Which one of these items do not exist in vanilla Minecraft?',
+    option1:{
+        text:"Golden Carrot",
+        correct:false,
+    },
+    option2:{
+        text:"Snow Bucket",
+        correct:false,
+    },
+    option3:{
+        text:"Silver Ingot",
+        correct:true,
+    },
+    option4:{
+        text:"Clock",
+        correct:false,
+    }
+},
+{//9
+    mainText:'Which block takes the longest time to mine?',
+    option1:{
+        text:"Ancient Debris",
+        correct:false,
+    },
+    option2:{
+        text:"Diamond Ore",
+        correct:false,
+    },
+    option3:{
+        text:"Obsidian",
+        correct:true,
+    },
+    option4:{
+        text:"Diamond Block",
+        correct:false,
+    }
+},
+{//10
+    mainText:'How long are Minecrafts day and night combined in real-time?',
+    option1:{
+        text:"20 Min",
+        correct:true,
+    },
+    option2:{
+        text:"1 Hours",
+        correct:false,
+    },
+    option3:{
+        text:"30 Minutes",
+        correct:false,
+    },
+    option4:{
+        text:"10 Minutes",
+        correct:false,
+    }
 },
 ];
-const endings = [
-    {
-        text:"",
-        correctAnswersNeed:0,
-    },
-]
-const endButtonTextToBeginQuiz = "";//Текст для кнопки для начала нового квиза
-const beginMainText = "";//Основной текст начала квиза
-const beginButtonText = "";//Текст на кнопке начала квиза
-const nextQuestionText = "";//Текст перехода к следующему вопросу
-const endQuizText = ""; //Текст для перехода к концу квиза
+
+const endButtonTextToBeginQuiz = "Перейти к началу квиза";//Текст для кнопки для начала нового квиза
+const beginMainText = "Начало квиза";//Основной текст начала квиза
+const beginButtonText = "Начать квиз";//Текст на кнопке начала квиза
+const nextQuestionText = "Следующий вопрос";//Текст перехода к следующему вопросу
+const endQuizText = "Закончить квиз"; //Текст для перехода к концу квиза
 
 let mainText = document.getElementById("mainText");
 let opt1Text = document.getElementById("opt1Text");
 let opt2Text = document.getElementById("opt2Text");
 let opt3Text = document.getElementById("opt3Text");
 let opt4Text = document.getElementById("opt4Text");
-let opt5Text = document.getElementById("opt5Text");
-let opt6Text = document.getElementById("opt6Text");
 let beginButton = document.getElementById("beginButton");
 let endButtonToBegin = document.getElementById("endButtonToBegin");
-let nextQuestion = document.getElementById("nextQ");
+let nextQuestion = document.getElementById("nextQuestion");
 //nextQ
 
 let viewedQuestions = new Set();
 
 let correctAnswers = 0;
-let currentAnswer = 0;//1 - 6
+let currentAnswer = 0;//1 - 4
 let currentQuestion = 0;
 
 let isBegin = false;
@@ -62,12 +233,10 @@ function allZero(){
     opt2Text.innerHTML = "";
     opt3Text.innerHTML = "";
     opt4Text.innerHTML = "";
-    opt5Text.innerHTML = "";
-    opt6Text.innerHTML = "";
 }
 
 function rand(){
-
+    console.log("rand");
     let show = (Math.floor(Math.random() * (questions.length)));
     //находит число от 0 до количества вопросов всего
     while(/*!*/(viewedQuestions.has(show)))
@@ -80,27 +249,23 @@ function rand(){
 }
 
 function addOptions(){
-    opt1Text.addEventListener("click", opt1());
-    opt2Text.addEventListener("click", opt2());
-    opt3Text.addEventListener("click", opt3());
-    opt4Text.addEventListener("click", opt4());
-    opt5Text.addEventListener("click", opt5());
-    opt6Text.addEventListener("click", opt6());
+    opt1Text.addEventListener("click", opt1);
+    opt2Text.addEventListener("click", opt2);
+    opt3Text.addEventListener("click", opt3);
+    opt4Text.addEventListener("click", opt4);
 }
 
 function deleteOptions(){
-    opt1Text.removeEventListener("click", opt1());
-    opt2Text.removeEventListener("click", opt2());
-    opt3Text.removeEventListener("click", opt3());
-    opt4Text.removeEventListener("click", opt4());
-    opt5Text.removeEventListener("click", opt5());
-    opt6Text.removeEventListener("click", opt6());
+    opt1Text.removeEventListener("click", opt1);
+    opt2Text.removeEventListener("click", opt2);
+    opt3Text.removeEventListener("click", opt3);
+    opt4Text.removeEventListener("click", opt4);
 }
 
 function option(){
     isQuestion = false;
     isShowAns = true;
-    if(questions[currentQuestion]["option"+currentAnswer.toString()].correct)
+    if(questions[currentQuestion]["option"+currentAnswer.toString()].correct === true)
     {correctAnswers++;}
     if(viewedQuestions.size === maxQuestions)
     {nextQuestion.innerHTML = endQuizText;}
@@ -110,14 +275,10 @@ function option(){
     deleteOptions();
 }
 
-function opt1() {currentAnswer = 1; option();}
-function opt2() {currentAnswer = 2; option();}
-function opt3() {currentAnswer = 3; option();}
-function opt4() {currentAnswer = 4; option();}
-function opt5() {currentAnswer = 5; option();}
-function opt6() {currentAnswer = 6; option();}
-
-
+function opt1() {console.log("opt1"); currentAnswer = 1; option(); }
+function opt2() {console.log("opt2"); currentAnswer = 2; option(); }
+function opt3() {console.log("opt3"); currentAnswer = 3; option(); }
+function opt4() {console.log("opt4"); currentAnswer = 4; option(); }
 
 function begin(){
     allZero();
@@ -140,68 +301,55 @@ function showQuestion(){
     currentQuestion = num;
     viewedQuestions.add(currentQuestion);
     
+    opt1Text.innerHTML = questions[num].option1.text
+    opt2Text.innerHTML = questions[num].option2.text
+    opt3Text.innerHTML = questions[num].option3.text
+    opt4Text.innerHTML = questions[num].option4.text
     addOptions();
-    if(question[num].option1)
-    {opt1Text.innerHTML = question[num].option1.text}
-    if(question[num].option2)
-    {opt2Text.innerHTML = question[num].option2.text}
-    if(question[num].option3)
-    {opt3Text.innerHTML = question[num].option3.text}
-    if(question[num].option4)
-    {opt4Text.innerHTML = question[num].option4.text}
-    if(question[num].option5)
-    {opt5Text.innerHTML = question[num].option5.text}
-    if(question[num].option6)
-    {opt6Text.innerHTML = question[num].option6.text}
 };
 
 function showRightAns(){
-    for(let i=1; i<=6; ++i)
-    {
-        if(question[num]["option"+i.toString()]) { if(question[num]["option"+i.toString()].flag) {
-            document["opt"+i.toString()+"Text"].classList.add("green");
-            if(currentAnswer !== 1){
-                    document["opt"+currentAnswer.toString()+"Text"].classList.add("red");
-                }
-            }
-        }
-    }
-}
+    if(currentAnswer === 1 && !questions[currentQuestion].option1.correct)
+    {opt1Text.style.backgroundColor = "firebrick";}
+    if(currentAnswer === 2 && !questions[currentQuestion].option2.correct)
+    {opt2Text.style.backgroundColor = "firebrick";}
+    if(currentAnswer === 3 && !questions[currentQuestion].option3.correct)
+    {opt3Text.style.backgroundColor = "firebrick";}
+    if(currentAnswer === 4 && !questions[currentQuestion].option4.correct)
+    {opt4Text.style.backgroundColor = "firebrick";}
 
+    if(questions[currentQuestion].option1.correct)
+    {opt1Text.style.backgroundColor = "lime";}
+    if(questions[currentQuestion].option2.correct)
+    {opt2Text.style.backgroundColor = "lime";}
+    if(questions[currentQuestion].option3.correct)
+    {opt3Text.style.backgroundColor = "lime";}
+    if(questions[currentQuestion].option4.correct)
+    {opt4Text.style.backgroundColor = "lime";}
+}
+//document["opt"+currentAnswer.toString()+"Text"].style.backgroundColor = "red";
 function unshowRightAns(){
-    for(let i=1; i<=6; ++i)
-    {
-        if(question[num]["option"+i.toString()]) { if(question[num]["option"+i.toString()].flag) {
-            document["opt"+i.toString()+"Text"].classList.remove("green");
-            if(currentAnswer !== 1){
-                    document["opt"+currentAnswer.toString()+"Text"].classList.remove("red");
-                }
-            }
-        }
-    }
+    opt1Text.style.backgroundColor = "steelblue";
+    opt2Text.style.backgroundColor = "steelblue";
+    opt3Text.style.backgroundColor = "steelblue";
+    opt4Text.style.backgroundColor = "steelblue";
 }
 
 function end(){
     allZero();
     isEnd = true;
-    for (const ending in endings) {
-        if (ending.correctAnswersNeed < correctAnswers) {
-            mainText.innerHTML = ending.text;
-            break;
-        }
-    }
+    mainText.innerHTML = `У вас правильных ответов ${correctAnswers} из ${maxQuestions}`;
     endButtonToBegin.innerHTML = endButtonTextToBeginQuiz;
 }
 
 //////////////////////////////////////////////////////////eventsListeners
 
-beginButton.addEventListener("click",(e)=>{
+beginButton.addEventListener("mouseup",(e)=>{
     showQuestion();
     e.preventDefault();
 })
 endButtonToBegin.addEventListener("click",(e)=>{
     begin();
-    e.preventDefault();
 })
 
 nextQuestion.addEventListener("click",(e)=>{
@@ -210,7 +358,6 @@ nextQuestion.addEventListener("click",(e)=>{
     {end();}
     else
     {showQuestion();}
-    e.preventDefault();
 })
 
 ////////////start with begin

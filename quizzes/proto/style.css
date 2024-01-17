@@ -33,6 +33,11 @@ div{
     width: auto;
 }
 #mainText{
+    background-color: dodgerblue;
+    color: aliceblue;
+    border: 9px ridge darkslateblue;
+    width: 100%;
+    text-align: center;
     padding: 10px;
     margin: 5px;
 }
@@ -79,10 +84,10 @@ img:empty{
     display: none;
 }
 .green{
-    background-color: limegreen;
+    background-color: limegreen !important;
 }
 .red{
-    background-color: firebrick;
+    background-color: firebrick !important;
 }
 #buttonToMainPage{
     position: absolute;
