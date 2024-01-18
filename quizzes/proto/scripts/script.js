@@ -240,6 +240,7 @@ function allZero(){
     isQuestion = false;
     isShowAns = false;
     isNewQuestion = false
+    mainText.innerHTML = "";
     beginButton.innerHTML = "";
     endButtonToBegin.innerHTML = "";
     nextQuestion.innerHTML = "";
@@ -313,10 +314,10 @@ function changeState(){
     else if(isShowAns)
     {
         {
-            opt1Text.style.backgroundColor = "";
-            opt2Text.style.backgroundColor = "";
-            opt3Text.style.backgroundColor = "";
-            opt4Text.style.backgroundColor = "";
+            opt1Text.style.backgroundColor = "steelblue";
+            opt2Text.style.backgroundColor = "steelblue";
+            opt3Text.style.backgroundColor = "steelblue";
+            opt4Text.style.backgroundColor = "steelblue";
         }
         if(viewedQuestions.size === maxQuestions)
         {
@@ -338,7 +339,6 @@ function changeState(){
         isBegin = true;
 
         viewedQuestions.clear();
-        correctAnswers = 0;
         
         mainText.innerHTML = beginMainText;
         beginButton.innerHTML = beginButtonText;
