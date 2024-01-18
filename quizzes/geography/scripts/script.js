@@ -102,7 +102,7 @@ const questions = [
 },
 {//6
     mainText:'Какой из перечисленных городов является столицей Японии?',
-    image:"images/marian.jpg",
+    image:"images/токио.jpg",
     option1:{
         text:"Пекин",
         correct:false,
@@ -250,7 +250,6 @@ function allZero(){
     isQuestion = false;
     isShowAns = false;
     isNewQuestion = false
-    mainText.innerHTML = "";
     beginButton.innerHTML = "";
     endButtonToBegin.innerHTML = "";
     nextQuestion.innerHTML = "";

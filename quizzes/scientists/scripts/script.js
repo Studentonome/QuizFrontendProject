@@ -28,7 +28,7 @@ const questions = [
         correct:false,
     },
     option2:{
-        text:"Альберт Эйнштейн ",
+        text:"Альберт Эйнштейн",
         correct:true,
     },
     option3:{
