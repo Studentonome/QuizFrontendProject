@@ -250,7 +250,6 @@ function allZero(){
     isQuestion = false;
     isShowAns = false;
     isNewQuestion = false
-    mainText.innerHTML = "";
     beginButton.innerHTML = "";
     endButtonToBegin.innerHTML = "";
     nextQuestion.innerHTML = "";
