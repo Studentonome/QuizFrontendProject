@@ -314,10 +314,10 @@ function changeState(){
     else if(isShowAns)
     {
         {
-            opt1Text.style.backgroundColor = "steelblue";
-            opt2Text.style.backgroundColor = "steelblue";
-            opt3Text.style.backgroundColor = "steelblue";
-            opt4Text.style.backgroundColor = "steelblue";
+            opt1Text.style.backgroundColor = "";
+            opt2Text.style.backgroundColor = "";
+            opt3Text.style.backgroundColor = "";
+            opt4Text.style.backgroundColor = "";
         }
         if(viewedQuestions.size === maxQuestions)
         {
@@ -339,6 +339,7 @@ function changeState(){
         isBegin = true;
 
         viewedQuestions.clear();
+        correctAnswers = 0;
         
         mainText.innerHTML = beginMainText;
         beginButton.innerHTML = beginButtonText;

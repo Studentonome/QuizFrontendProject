@@ -1,0 +1,99 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: default;
+    user-select: none;
+    font-size: 1.3rem;
+    box-sizing: border-box;
+}
+body{
+    background-color: azure;
+}
+header{
+    background-color: dodgerblue;
+    color: aliceblue;
+    text-align: center;
+    font-size: 2rem;
+    width: 80%;
+    padding: 10px;
+    border: 9px ridge darkslateblue;
+    margin: auto;
+}
+main{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+div{
+    height: auto;
+    width: auto;
+}
+#mainText{
+    background-color: dodgerblue;
+    color: aliceblue;
+    border: 9px ridge darkslateblue;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+.flexbox{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    align-content: start;
+    justify-items: stretch;
+    align-items: stretch;
+}
+.option{
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    width: 40%;
+    border-radius: 5px;
+    border: 7px outset darkblue;
+    transition: 0.2s;
+}
+.option:hover{
+    border: 7px inset darkblue;
+    background-color: steelblue;
+    transition: 0.2s;
+}
+.button{
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    width: 80%;
+    border-radius: 5px;
+    border: 7px outset darkblue;
+    transition: 0.2s;
+}
+.button:hover{
+    border: 7px inset darkblue;
+    background-color: steelblue;
+    transition: 0.2s;
+}
+div:empty{
+    display: none;
+}
+img{
+    border: 2px solid black;
+    margin: 2px;
+    max-height: 280px;
+}
+#buttonToMainPage{
+    position: absolute;
+    float: left;
+    background-color: dodgerblue;
+    color: aliceblue;
+    border: 9px ridge darkslateblue;
+    text-align: center;
+    font-size: 1.2rem;
+    height: auto;
+    width: auto;
+}
+#buttonToMainPage a{
+    display: inline-block;
+    color:darkslategray;
+    font-size: 1.2rem;
+}
