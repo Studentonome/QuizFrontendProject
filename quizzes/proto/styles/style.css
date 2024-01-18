@@ -3,7 +3,7 @@
     text-decoration: none;
     cursor: default;
     user-select: none;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     box-sizing: border-box;
 }
 body{
@@ -13,7 +13,7 @@ header{
     background-color: dodgerblue;
     color: aliceblue;
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
     width: 80%;
     padding: 10px;
     border: 9px ridge darkslateblue;
@@ -25,6 +25,8 @@ main{
     margin-top: 20px;
 }
 div{
+    max-width: 500px;
+    max-height: 500px;
     height: auto;
     width: auto;
 }
@@ -76,10 +78,8 @@ div{
 div:empty{
     display: none;
 }
-img{
-    border: 2px solid black;
-    margin: 2px;
-    max-height: 280px;
+img:empty{
+    display: none;
 }
 #buttonToMainPage{
     position: absolute;
